@@ -117,7 +117,7 @@ function App() {
     </div>
   ) : (
     <div className="App">
-      <header className="App-header">Loading...!</header>
+      <header className="App-header">Loading...</header>
     </div>
   );
 }
