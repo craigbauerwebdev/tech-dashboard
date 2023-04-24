@@ -57,18 +57,23 @@ function App() {
 
   const saveWinner = (a, b) => {
     //console.log(a, " - ", b, " - ", c);
-    const db = getDatabase();
-    update(ref(db, "winners/" + a + "/"), {
-      first: a,
-      //email: b.replace(/%2E/g, "."),
-      last: b,
-    })
-      .then(() => {
-        console.log("Success");
+    if (a !== "Test" && b !== "Test" && a !== "test" && b !== "test") {
+      const db = getDatabase();
+      update(ref(db, "winners/" + a + "/"), {
+        first: a,
+        //email: b.replace(/%2E/g, "."),
+        last: b,
       })
-      .catch((error) => {
-        console.log("Error Saving Winner: ", error);
-      });
+        .then(() => {
+          console.log("Success");
+          getWinners();
+        })
+        .catch((error) => {
+          console.log("Error Saving Winner: ", error);
+        });
+    } else {
+      getWinners();
+    }
 
     // if we don't want to show the dashboard but rather another site
     /*setTimeout(() => {
